@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+	http_basic_authenticate_with name: "admin", password: "1234",
+	except: [:index, :show]
+
+
 	def index
 		@post = Post.all
 	end
@@ -22,6 +26,15 @@ class PostsController < ApplicationController
 			render 'edit'	
 		end
 	end
+
+def destroy
+	@post = Post.find(params[:id])
+
+	@post.destroy
+	redirect_to posts_path
+end
+
+
 	def create
 		#render plain: params[:post].inspect
 		@post = Post.new(post_params)
@@ -34,7 +47,7 @@ class PostsController < ApplicationController
 	end
 
 	private def post_params
-		params.require(:post).permit(:title, :body)
+		params.require(:post).permit(:title, :body, :image)
 	end
 
 end
