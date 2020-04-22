@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Twiterblog</title>
+    <title>Twitterblog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
 
-    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-bold">TwiterBlog</h5>
-  <nav class="my-2 my-md-0 mr-md-3">
-    <span class="p-2 text-dark"><%= link_to "Главная страница", home_path %></span>
-    <span class="p-2 text-dark"><%= link_to "Про нас", about_path %></span>
-  </nav>
-  </nav>
-  <span class="p-2 text-dark"><%= link_to "Добавления статьи", new_post_path %></span>
-</div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div>
+    <h4 class="font-weight-bold mb-0">
+      <%= image_pack_tag 'twitter-logo.png', size: '35x30', alt: 'Logo', :class => "mb-2"  %>
+      <%= link_to "Twitter Blog", home_path, :class => "blog-title" %>
+    </h4>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <span class="nav-link font-weight-bolder"> <%= link_to "Главная страница", home_path, :class => "nav-link" %> <span class="sr-only">(current)</span></span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link font-weight-bolder" href="#"><%= link_to "О нас", about_path, :class => "nav-link" %></span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link font-weight-bolder" href="#"><%= link_to "Добавить пост", new_post_path, :class => "nav-link" %></span>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <div class="container">
     <%= yield %>

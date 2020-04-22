@@ -1,16 +1,22 @@
-<h1><%= @post.title %></h1>
-<p><%= image_tag @post.image_url(:large), class: 'image-show' if @post.image? %></p>
-<p><%= @post.body %></p>
-<hr>
-<%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %>
-<%= link_to "Удалить пост", post_path(@post), method: :delete, data:{confirm: "Вы хотите удалить статью?"}, :class => 'btn btn-danger' %>
+<div class="text-center">
+	<%= image_tag @post.image_url(:large), class: 'image-show mt-3' if @post.image? %>
+	<h3>
+		<%= @post.title %>
+	</h3>
+	<p class="alert-light">
+		<%= @post.body %>
+	</p>
+	<hr>
+	<%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %>
+	<%= link_to "Удалить пост", post_path(@post), method: :delete, data:{confirm: "Вы хотите удалить статью?"}, :class => 'btn btn-danger' %>
+</div>
 
 <hr>
 <h2>Все комментарии</h2>	
 <% @post.comments.each do |comment| %>
-<div>
-<p><strong><%= comment.username %></strong>: <%= comment.body %></p>
-</div>
+<p>
+	<strong><%= comment.username %></strong>: <%= comment.body %>
+</p>
 <% end %>
 <hr>
 

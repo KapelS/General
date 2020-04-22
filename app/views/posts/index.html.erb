@@ -1,12 +1,14 @@
-<h1>Все наши посты</h1>	
+<h1 class="text-center mt-2">Все наши посты</h1>	
 <% @post.each do |post| %>
-<div class="alert alert-light">
-<hr>
-<section class="post-summary clearfix">
-<%= image_tag post.image.url(:thumb), class: 'img-thumbnail thumb' if post.image? %>
-<h3><%= post.title %></h3>
-<p><%= post.body %></p>
-</section>
+<div class="alert">
+    <hr>
+    <section class="d-flex post-summary clearfix">
+        <%= image_tag post.image.url(:thumb), class: 'img-thumbnail thumb mt-2 max' if post.image? %>
+        <div class="post-text">
+            <h3 class="post-title"><%= post.title %></h3>
+            <p class="ml-2 alert-light"><%= post.body %></p>
+        </div>
+    </section>
 <%= link_to "Читать далее", post_path(post), :class => 'btn btn-outline-primary' %>
 </div>
 
