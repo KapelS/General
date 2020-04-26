@@ -9,7 +9,7 @@
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: #fff;
+    color: inherit;
 }
 
 .post-text {
@@ -35,4 +35,13 @@
 
 .image-show {
     height: 200px;
+}
+
+
+.border-line {
+    border-right: 1px solid #7f8c8d;
+}
+
+.mrg {
+    margin-left: 11.5px;
 }

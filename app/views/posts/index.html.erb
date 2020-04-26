@@ -9,7 +9,9 @@
 						<p class="ml-2 alert-light"><%= post.body %></p>
 				</div>
 		</section>
-<%= link_to "Читать далее", post_path(post), :class => 'btn btn-outline-primary' %>
+		<div class="text-right">
+			<%= link_to "Читать далее", post_path(post), :class => 'btn btn-outline-primary' %>
+		</div>
 </div>
 
 <% end %>

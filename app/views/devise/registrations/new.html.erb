@@ -1,29 +1,32 @@
-<h2>Sign up</h2>
+<div class="text-center">
+  <%= image_pack_tag 'twitter-logo.png', size: '35x30', alt: 'Logo', :class => "mt-2 mb-2"  %>
+  <h2 class="text-center">Регистрация</h2>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <%= f.label :"Электронная почта" %><br />
+    <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: "email", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="field mt-1">
+    <%= f.label :"Пароль" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> символов минимум)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+  <div class="field mt-1">
+    <%= f.label :"Подтвердите пароль" %><br />
+    <%= f.password_field :password_confirmation, placeholder: "Confirm password", autocomplete: "new-password", class: "form-control" %>
   </div>
 
   <div class="actions">
     <br>
-    <%= f.submit "Sign up", class: "btn btn-primary" %>
+    <%= f.submit "Зарегистрироваться", class: "btn btn-primary btn-block" %>
   </div>
 <% end %>
 
