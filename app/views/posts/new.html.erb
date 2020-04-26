@@ -1,9 +1,16 @@
 <h2 class="text-center mt-2">Добавление нового поста</h2>
 <%= form_for :post, url: posts_path, html: { multipart: true } do |f| %>
 <% if @post.errors.any? %>
-	<% @post.errors.full_messages.each do |msg| %>
-		<div class="alert alert-danger"><%= msg %></div>
-		<% end %>
+	
+		<div class="alert alert-danger">
+			<h5><%= t('common.errors') %></h5>
+			<ul>
+				<% @post.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<%end%>
+			</ul>
+		</div>
+		
 	<% end %>
 	<hr>
 	 	<p>

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-	http_basic_authenticate_with name: "admin", password: "1234",
-	except: [:index, :show]
+	before_action :authenticate_user!, except: [:index, :show]
+	before_action :set_post, only: [ :show, :edit, :update, :destroy ]
+	
 
 
 	def index
@@ -21,9 +22,9 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 
 		if(@post.update(post_params))
-			redirect_to @post
+			redirect_to @post, success: 'Статья успешно обновлена'
 		else
-			render 'edit'	
+			render 'edit', danger: 'Статья не обновлена'	
 		end
 	end
 
@@ -31,7 +32,7 @@ def destroy
 	@post = Post.find(params[:id])
 
 	@post.destroy
-	redirect_to posts_path
+	redirect_to posts_path, success: 'Статья успешно удалена'
 end
 
 
@@ -40,14 +41,17 @@ end
 		@post = Post.new(post_params)
 
 		if(@post.save)
-			redirect_to @post
+			redirect_to @post, success: 'Статья успешно создана'
 		else
-			render 'new'	
+			render 'new', danger: 'Статья не создана'	
 		end
 	end
 
 	private def post_params
 		params.require(:post).permit(:title, :body, :image)
 	end
+	def set_post
+         @post = Post.find(params[:id])
+      end
 
 end

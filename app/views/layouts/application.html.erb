@@ -29,11 +29,37 @@
       <li class="nav-item">
         <span class="nav-link font-weight-bolder" href="#"><%= link_to "О нас", about_path, :class => "nav-link" %></span>
       </li>
-      <li class="nav-item">
+       <li class="nav-item">
         <span class="nav-link font-weight-bolder" href="#"><%= link_to "Добавить пост", new_post_path, :class => "nav-link" %></span>
-      </li>
+      </li> 
+
+<ul class="navbar-nav">
+ <% if user_signed_in? %>
+        <li class="nav-item active">
+          <span class="nav-link font-weight-bolder"> <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "nav-link" %> <span class="sr-only">(current)</span></span>
+        </li>
+  <% else %>
+        <li class="nav-item active">
+          <span class="nav-link font-weight-bolder"> <%= link_to "Вход", new_user_session_path, class: "nav-link" %> <span class="sr-only">(current)</span></span>
+        </li>
+        <li class="nav-item active">
+          <span class="nav-link font-weight-bolder"> <%= link_to "Регистрация", new_user_registration_path, class: "nav-link" %> <span class="sr-only">(current)</span></span>
+        </li>
+      <% end %>
     </ul>
   </div>
+  
+
+  <div class= "col-md-12">
+    <% flash.each do |name, message| %>
+      <div class="alert alert-<%= name %> <% bootstrap_class_for(name) %>">
+        <button class="close" data-dismiss="alert">&times;</button>
+        <%= message %>
+      </div>
+      <% end %>
+  </div>
+
+
 </nav>
 
 <div class="container">
