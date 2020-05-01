@@ -1,25 +1,31 @@
-<h2>Change your password</h2>
+<div class="text-center mt-2">
+  <h3>Измените ваш пароль</h3>
+</div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
+  <div class="field col-4 ml-0">
+    <p class="mb-2">
+    <%= f.label :password, "Новый пароль", class: "mb-0" %>
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <em>(<%= @minimum_password_length %> символов минимум)</em>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    </p>
+    <%= f.password_field :password, autofocus: true, placeholder: "New password", class: "form-control", autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field col-4 ml-0">
+    <p class="mb-0 mt-2"><%= f.label :password_confirmation, "Подтвердите новый пароль" %></p>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm new password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="actions ml-3">
+    <%= f.submit "Изменить пароль", class: "btn btn-outline-success mt-2" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="mrg d-flex justify-content-start">
+  <%= render "devise/shared/links" %>
+</div>

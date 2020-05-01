@@ -10,21 +10,24 @@
 			<%end%>
 			</ul>
 		</div>
-		
 	<% end %>
-	<hr>
-	 	<p>
-	 		Название <br>
+	 	<div class="mb-2">
+	 		<p class="mb-1">Название</p>
 	 		<%= f.text_field(:title, {:class => 'form-control'}) %>
-	 	</p>
-	 	<p>
-	 		Текст статьи <br>
+	 	</div>
+	 	<div class="mb-2">
+	 		<p class="mb-1">Текст статьи</p> 
 	 		<%= f.text_area(:body, {:class => 'form-control'}) %>
-	 	</p>
-	 	<p>
-	 		<%= f.file_field :image %>
+		 </div>
+		 
+	 	<div class="custom-file mt-2 mb-2">
+			 <%= f.file_field :image, class: "custom-file-input d-inline-block", id: "customFile" %>
+			 <label class="custom-file-label" for="customFile">Choose file</label>
+		</div>
 
-	 	<p>
-			 <%= f.submit class: 'btn btn-success', value: 'Добавить пост' %>
-		 </p>
-		 <% end %>
+
+
+		<div>
+			<%= f.submit class: 'btn btn-success', value: 'Добавить пост' %>
+		</div>
+		<% end %>
