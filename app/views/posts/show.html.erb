@@ -7,10 +7,15 @@
 		<%= @post.body %>
 	</p>
 	<hr>
-	<%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %>
-	<%= link_to "Удалить пост", post_path(@post), method: :delete, data:{confirm: "Вы хотите удалить статью?"}, :class => 'btn btn-danger' %>
-</div>
 
+	<% if @post.user == current_user %>
+		<%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning' %>
+		<%= link_to "Удалить пост", post_path(@post), method: :delete, data:{confirm: "Вы хотите удалить статью?"}, :class => 'btn btn-danger' %>
+	<% end %>
+</div>
+<!-- 
+<%= render 'disqus' %>
+   -->
 <hr>
 <h2>Все комментарии</h2>	
 <% @post.comments.each do |comment| %>
