@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-root 'posts#index', as: 'home'
+root 'posts#index'
 
 get 'about' => 'pages#about', as: 'about'
 
